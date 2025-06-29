@@ -1,0 +1,23 @@
+[user]
+	email = rodrigo552147@outlook.be
+	name = RodrigoUma04
+[init]
+	defaultBranch = main
+[core]
+  editor = nvim
+  pager = delta # used for colored, side-by-side diffs and logs
+  autocrlf = input # handles line endings properly between Windows and Unix
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+  features = side-by-side line-numbers decorations
+[merge]
+  conflictstyle = diff3
+[fetch]
+  prune = true
+[push]
+  default = current
+[gc]
+  auto = 256
