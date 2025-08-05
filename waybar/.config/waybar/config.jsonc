@@ -1,25 +1,80 @@
 {
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "pulseaudio", "clock"],
+  "modules-center": ["clock"],
+  "modules-right": ["group/sysinfo","network", "pulseaudio", "pulseaudio/slider", "group/group-power"],
   "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+      "interval": 1,
+      "tooltip": true,
+      "format": "   {:%H:%M}",
+      "tooltip-format": "{:%d-%m-%Y}",
   },
   "network": {
-    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+      "interface": "eno1",
+      "format-ethernet": "",
+      "format-disconnected": "",
+      "max-length": 50,
+      "tooltip": false,
   },
   "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "",
-      "format-icons": {
-          "default": ["", "", " "]
-      },
-      "on-click": "pavucontrol"
+    "format": "    {volume}%",
+    "format-muted": "",
+    "scroll-step": 5,
+    "on-click": "pavucontrol"
+  },
+  "pulseaudio/slider": {
+      "scroll-step": 5,
+      "min": 0,
+      "max": 100
+  },
+  "group/group-power": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-power",
+        "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/power",
+      "custom/lock",        
+      "custom/reboot",
+      ]
+  },
+  "custom/lock": {
+    "format": "󰍁",
+    "tooltip": false,
+    "on-click": "hyprlock"
+  },
+  "custom/reboot": {
+    "format": "󰜉",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "shutdown now"
+  },
+  "cpu": {
+    "interval": 3,
+    "format": "{}% ",
+    "max-length": 10,
+    "tooltip": false
+  },
+  "memory": {
+    "interval": 3,
+    "format": "{}% ",
+    "max-length": 10,
+    "tooltip": false
+  },
+  "disk": {
+    "interval": 1,
+    "format": "{percentage_free}% ",
+	"tooltip-format": "{specific_free:0.2f} GB out of {specific_total:0.2f} GB available.",
+    "unit": "GB"
+  },
+  "group/sysinfo": {
+    "orientation": "horizontal",
+    "modules": ["disk", "memory", "cpu"]
   }
 }
