@@ -50,3 +50,6 @@ alias gl='git log --oneline --graph --decorate'
 alias dcu='docker compose up'
 alias dcd='docker compose down'
 
+# MGCB editor
+export PATH="$PATH:/home/rodrigodev/.dotnet/tools"
+
