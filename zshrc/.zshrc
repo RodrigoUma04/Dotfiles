@@ -25,12 +25,18 @@ prompt_dir_short() {
   fi
 }
 
-# Optional aliases (add more if you want)
+# Aliases
 alias gs='git status'
 alias gl='git log --oneline --graph --decorate'
+alias ga='git add .'
+alias gph='git push'
+alias gpl='git pull'
 alias ll='ls -lh --color=auto'
 alias la='ls -A'
 alias ..='cd ..'
+alias cl='clear'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
 
 # Plugins
 plugins=(auto-notify $plugins)
@@ -43,12 +49,6 @@ source $ZSH_PLUGINS/zsh-auto-notify/auto-notify.plugin.zsh
 # Key binds
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-# Aliases
-alias gs='git status'
-alias gl='git log --oneline --graph --decorate'
-alias dcu='docker compose up'
-alias dcd='docker compose down'
 
 # MGCB editor
 export PATH="$PATH:/home/rodrigodev/.dotnet/tools"
